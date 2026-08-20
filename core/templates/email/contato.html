@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo orçamento - LS Tech</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: #0b1a2e;
+            padding: 30px 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .header h1 span {
+            color: #3b9eff;
+        }
+        .header p {
+            color: rgba(255,255,255,0.6);
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .content h2 {
+            font-size: 20px;
+            margin-top: 0;
+            color: #0b1a2e;
+            border-bottom: 2px solid #eef2f7;
+            padding-bottom: 12px;
+        }
+        .field {
+            margin-bottom: 18px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #3b9eff;
+        }
+        .field-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #7a8b9f;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .field-value {
+            font-size: 16px;
+            color: #1a2634;
+            font-weight: 500;
+            word-break: break-word;
+        }
+        .message-box {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+            color: #1a2634;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #7a8b9f;
+            border-top: 1px solid #eef2f7;
+        }
+        .footer a {
+            color: #3b9eff;
+            text-decoration: none;
+        }
+        .badge {
+            display: inline-block;
+            background: #3b9eff;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        @media only screen and (max-width: 480px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            .header {
+                padding: 20px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>LS <span>Tech</span></h1>
+            <p>Desenvolvimento de sistemas sob medida</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h2>📋 Nova solicitação de orçamento</h2>
+            
+            <div class="field">
+                <div class="field-label">👤 Nome completo</div>
+                <div class="field-value">{{ nome }}</div>
+            </div>
+
+            <div class="field">
+                <div class="field-label">🏢 Empresa</div>
+                <div class="field-value">{{ empresa }}</div>
+            </div>
+
+            <div class="field">
+                <div class="field-label">📧 E-mail</div>
+                <div class="field-value"><a href="mailto:{{ email }}">{{ email }}</a></div>
+            </div>
+
+            <div class="field">
+                <div class="field-label">📱 WhatsApp</div>
+                <div class="field-value">{{ whatsapp }}</div>
+            </div>
+
+            <div class="field" style="border-left-color: #6b7280;">
+                <div class="field-label">💬 Mensagem</div>
+                <div class="message-box">{{ mensagem }}</div>
+            </div>
+
+            <div style="margin-top: 24px; text-align: center;">
+                <span class="badge">Novo lead</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                Esta mensagem foi enviada através do formulário de contato do site da LS Tech.<br>
+                <a href="mailto:lstechsolution1@gmail.com">lstechsolution1@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

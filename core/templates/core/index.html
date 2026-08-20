@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LS Tech | Desenvolvimento de Sistemas Sob Medida</title>
+    <meta name="description" content="A LS Tech desenvolve sistemas web, automações, dashboards e soluções digitais sob medida para empresas." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LS Tech | Desenvolvimento de Sistemas Sob Medida" />
+    <meta property="og:description" content="A LS Tech desenvolve sistemas web, automações, dashboards e soluções digitais sob medida para empresas." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lstech.dev" />
+    <meta property="og:image" content="https://lstech.dev/og-image.jpg" />
+
+    <style>
+        /* ===== CSS Custom Properties ===== */
+        :root {
+            --color-primary: #0b1a2e;
+            --color-primary-light: #1a2f4a;
+            --color-accent: #3b9eff;
+            --color-accent-hover: #2a7fd9;
+            --color-accent-glow: rgba(59, 158, 255, 0.25);
+            --color-text: #1a1a2e;
+            --color-text-light: #4a4a6a;
+            --color-text-muted: #7a7a9a;
+            --color-bg: #f8fafc;
+            --color-bg-card: #ffffff;
+            --color-border: #e2e8f0;
+            --color-border-focus: #3b9eff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.10);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+        }
+
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            padding-top: var(--header-height);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+	.messages {
+    	    margin-bottom: 20px;
+	}
+	.alert {
+	    padding: 12px 16px;
+	    border-radius: var(--radius-xs);
+	    margin-bottom: 10px;
+	    font-weight: 500;
+	}
+	.alert-success {
+	    background: #dcfce7;
+	    color: #166534;
+	    border: 1px solid #86efac;
+	}
+	.alert-error {
+	    background: #fee2e2;
+	    color: #991b1b;
+	    border: 1px solid #fca5a5;
+	}
+	.error {
+	    color: #dc2626;
+	    font-size: 0.8rem;
+	    display: block;
+	    margin-top: 4px;
+	}
+        .text-center {
+            text-align: center;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            text-decoration: none;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: #fff;
+            box-shadow: 0 4px 16px var(--color-accent-glow);
+        }
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px var(--color-accent-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            border: 1.5px solid var(--color-border);
+        }
+        .btn-outline:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+        }
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.30);
+        }
+        .btn-success:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Header ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(14px) saturate(1.6);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: background var(--transition), box-shadow var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            transition: color var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .btn {
+            margin-left: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: var(--radius-xs);
+            transition: background var(--transition);
+        }
+        .menu-toggle:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+        .menu-toggle span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--color-text);
+            border-radius: 4px;
+            transition: transform var(--transition), opacity var(--transition);
+            transform-origin: center;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 60px 0 80px;
+            background: linear-gradient(165deg, var(--color-primary) 0%, #0f2840 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - var(--header-height));
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 70%;
+            height: 140%;
+            background: radial-gradient(ellipse at 70% 50%, rgba(59, 158, 255, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--color-accent);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual .visual-box {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 4 / 3;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual .visual-box svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+        }
+
+        .hero-visual .glow-dot {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+        .hero-visual .glow-dot.g1 {
+            width: 200px;
+            height: 200px;
+            background: var(--color-accent);
+            opacity: 0.15;
+            top: -20%;
+            right: -10%;
+        }
+        .hero-visual .glow-dot.g2 {
+            width: 140px;
+            height: 140px;
+            background: #6c5ce7;
+            opacity: 0.10;
+            bottom: -10%;
+            left: -10%;
+        }
+
+        /* ===== Problem ===== */
+        .problem {
+            background: #fff;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .problem-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.05rem;
+            color: var(--color-text-light);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .problem-item:last-child {
+            border-bottom: none;
+        }
+        .problem-item .icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(59, 158, 255, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        .problem-text h2 {
+            margin-bottom: 12px;
+        }
+        .problem-text p {
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* ===== Services ===== */
+        .services {
+            background: var(--color-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--color-accent);
+        }
+
+        .service-card .icon {
+            font-size: 1.8rem;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== Projects ===== */
+        .projects {
+            background: #fff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .project-card {
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(59, 158, 255, 0.10);
+            color: var(--color-accent);
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .project-card .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0 20px;
+        }
+
+        .project-card .tech-tags span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+        }
+
+        .project-card .btn {
+            align-self: flex-start;
+        }
+
+        .project-card .btn-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        /* ===== Technologies ===== */
+        .tech {
+            background: var(--color-bg);
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px 32px;
+            margin-top: 36px;
+        }
+
+        .tech-item {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            padding: 8px 16px;
+            background: var(--color-bg-card);
+            border-radius: 40px;
+            border: 1px solid var(--color-border);
+            transition: border-color var(--transition), color var(--transition), transform var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-item:hover {
+            border-color: var(--color-accent);
+            color: var(--color-text);
+            transform: translateY(-2px);
+        }
+
+        .tech-item .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            opacity: 0.5;
+        }
+
+        /* ===== Process ===== */
+        .process {
+            background: #fff;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+            counter-reset: step;
+        }
+
+        .process-step {
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            border: 1px solid var(--color-border);
+            position: relative;
+            transition: transform var(--transition), box-shadow var(--transition);
+            counter-increment: step;
+        }
+
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .process-step::before {
+            content: counter(step);
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            opacity: 0.20;
+            line-height: 1;
+            display: block;
+            margin-bottom: 8px;
+            font-feature-settings: "tnum";
+        }
+
+        .process-step h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== Differentials ===== */
+        .differentials {
+            background: var(--color-bg);
+        }
+
+        .diffs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .diff-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .diff-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .diff-card .icon {
+            font-size: 1.6rem;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .diff-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .diff-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== About ===== */
+        .about {
+            background: #fff;
+        }
+
+        .about-content {
+            max-width: 740px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.9;
+            margin-top: 16px;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: var(--color-primary);
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 520px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        /* ===== Contact ===== */
+        .contact {
+            background: var(--color-bg);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .contact-info p {
+            color: var(--color-text-light);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .contact-info .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: #25d366;
+            font-size: 1.1rem;
+            transition: color var(--transition);
+        }
+        .contact-info .whatsapp-link:hover {
+            color: #1da851;
+        }
+
+        .contact-form {
+            background: var(--color-bg-card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            color: var(--color-text);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-xs);
+            font-family: var(--font);
+            font-size: 1rem;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-border-focus);
+            box-shadow: 0 0 0 4px rgba(59, 158, 255, 0.10);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--color-primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 48px 0 32px;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand .logo {
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .footer-brand .logo span {
+            color: var(--color-accent);
+        }
+        .footer-brand p {
+            font-size: 0.95rem;
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .footer h4 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .footer ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer ul li a {
+            font-size: 0.9rem;
+            transition: color var(--transition);
+        }
+        .footer ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== Animations ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Modal de fallback ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #fff;
+            max-width: 560px;
+            width: 100%;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            animation: modalFade 0.3s ease;
+        }
+
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-box .icon-big {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+        }
+
+        .modal-box h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .modal-box .data-preview {
+            background: var(--color-bg);
+            padding: 16px;
+            border-radius: var(--radius-xs);
+            text-align: left;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            border: 1px solid var(--color-border);
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .modal-box .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-box .btn-group .btn {
+            min-width: 140px;
+        }
+
+        /* ===== Responsiveness ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-visual .visual-box {
+                max-width: 380px;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 64px;
+            }
+
+            .section-padding {
+                padding: 56px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 24px 32px 32px;
+                gap: 20px;
+                border-bottom: 1px solid var(--color-border);
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+                pointer-events: none;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links a {
+                font-size: 1.05rem;
+            }
+
+            .nav-links .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 40px 0 60px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-visual .visual-box {
+                max-width: 280px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .diffs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-form {
+                padding: 24px;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .diffs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .problem-item {
+                font-size: 0.95rem;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+
+            .modal-box {
+                padding: 24px;
+            }
+        }
+
+        .visual-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header" role="banner">
+        <div class="container">
+            <a href="#" class="logo" aria-label="LS Tech - Página inicial">
+                LS <span>Tech</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks" role="navigation" aria-label="Menu principal">
+                <a href="#hero">Início</a>
+                <a href="#services">Serviços</a>
+                <a href="#projects">Projetos</a>
+                <a href="#process">Processo</a>
+                <a href="#about">Sobre</a>
+                <a href="#contact">Contato</a>
+                <a href="#contact" class="btn btn-primary btn-sm">Solicitar orçamento</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="hero-title">
+                    Sistemas que transformam <br /><span class="highlight">necessidades em soluções.</span>
+                </h1>
+                <p>
+                    Desenvolvemos sistemas web, automações e soluções digitais sob medida para empresas que querem
+                    simplificar processos e crescer com tecnologia.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Solicitar orçamento</a>
+                    <a href="#projects" class="btn btn-outline-light">Conhecer nossos projetos</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-box">
+                    <div class="glow-dot g1"></div>
+                    <div class="glow-dot g2"></div>
+                    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="20" y="20" width="360" height="260" rx="16" stroke="rgba(255,255,255,0.10)" stroke-width="1.5" />
+                        <rect x="40" y="44" width="120" height="28" rx="6" fill="rgba(59,158,255,0.25)" />
+                        <rect x="180" y="44" width="80" height="28" rx="6" fill="rgba(255,255,255,0.06)" />
+                        <rect x="280" y="44" width="60" height="28" rx="6" fill="rgba(255,255,255,0.06)" />
+                        <rect x="40" y="88" width="100" height="12" rx="4" fill="rgba(255,255,255,0.08)" />
+                        <rect x="40" y="108" width="140" height="12" rx="4" fill="rgba(255,255,255,0.06)" />
+                        <rect x="40" y="128" width="80" height="12" rx="4" fill="rgba(255,255,255,0.06)" />
+                        <rect x="40" y="172" width="160" height="16" rx="6" fill="rgba(59,158,255,0.20)" />
+                        <rect x="40" y="200" width="200" height="16" rx="6" fill="rgba(59,158,255,0.12)" />
+                        <rect x="40" y="228" width="120" height="16" rx="6" fill="rgba(59,158,255,0.08)" />
+                        <circle cx="310" cy="180" r="36" stroke="rgba(59,158,255,0.20)" stroke-width="2" />
+                        <circle cx="310" cy="180" r="20" stroke="rgba(59,158,255,0.15)" stroke-width="2" />
+                        <circle cx="310" cy="180" r="6" fill="rgba(59,158,255,0.30)" />
+                        <path d="M40 250 L80 220 L120 240 L160 210 L200 230 L240 200 L280 225 L320 195 L340 210" stroke="rgba(59,158,255,0.15)" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROBLEM ===== -->
+    <section class="problem section-padding" id="problem" aria-labelledby="problem-title">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <span class="icon"><i class="fas fa-file-alt"></i></span>
+                        Processos manuais que consomem tempo
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon"><i class="fas fa-table"></i></span>
+                        Planilhas espalhadas e desorganizadas
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                        Agendamentos e tarefas sem controle
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon"><i class="fas fa-puzzle-piece"></i></span>
+                        Falta de integração entre sistemas
+                    </div>
+                    <div class="problem-item">
+                        <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+                        Sistemas prontos que não atendem às suas necessidades
+                    </div>
+                </div>
+                <div class="problem-text">
+                    <h2 class="section-title" id="problem-title">Sua empresa tem um problema.<br />Nós desenvolvemos a solução.</h2>
+                    <p>
+                        A LS Tech cria sistemas adaptados ao fluxo de cada negócio. Não importa se você precisa
+                        organizar agendamentos, automatizar tarefas repetitivas ou integrar dados espalhados —
+                        desenvolvemos a ferramenta certa para o seu processo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services section-padding" id="services" aria-labelledby="services-title">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" id="services-title">Nossos serviços</h2>
+                <p class="section-subtitle mx-auto">Soluções digitais desenvolvidas sob medida para o seu negócio.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <span class="icon"><i class="fas fa-globe"></i></span>
+                    <h3>Sistemas Web</h3>
+                    <p>Sistemas personalizados para gestão, operações e processos internos da sua empresa.</p>
+                </div>
+                <div class="service-card reveal">
+                    <span class="icon"><i class="fas fa-clock"></i></span>
+                    <h3>Sistemas de Agendamento</h3>
+                    <p>Soluções para organizar horários, clientes, serviços e profissionais de forma simples.</p>
+                </div>
+                <div class="service-card reveal">
+                    <span class="icon"><i class="fas fa-robot"></i></span>
+                    <h3>Automação</h3>
+                    <p>Automação de tarefas repetitivas para reduzir trabalho manual e aumentar a eficiência.</p>
+                </div>
+                <div class="service-card reveal">
+                    <span class="icon"><i class="fas fa-chart-pie"></i></span>
+                    <h3>Dashboards</h3>
+                    <p>Painéis para transformar dados em informações úteis e apoiar decisões estratégicas.</p>
+                </div>
+                <div class="service-card reveal">
+                    <span class="icon"><i class="fas fa-plug"></i></span>
+                    <h3>APIs e Integrações</h3>
+                    <p>Integração entre sistemas e serviços para centralizar processos e dados.</p>
+                </div>
+                <div class="service-card reveal">
+                    <span class="icon"><i class="fas fa-user-cog"></i></span>
+                    <h3>Sistemas Administrativos</h3>
+                    <p>Painéis para gerenciamento de usuários, clientes, produtos, serviços e informações.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects section-padding" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" id="projects-title">Projetos que colocam a tecnologia em prática</h2>
+                <p class="section-subtitle mx-auto">Conheça alguns dos sistemas que desenvolvemos para resolver problemas reais.</p>
+            </div>
+            <div class="projects-grid">
+                <!-- LS Barbershop -->
+                <div class="project-card reveal">
+                    <span class="badge">Case</span>
+                    <h3>LS Barbershop</h3>
+                    <p>
+                        Sistema completo de gestão e agendamento desenvolvido para uma barbearia, demonstrando a
+                        capacidade da LS Tech de transformar necessidades reais de um negócio em uma solução digital funcional.
+                    </p>
+                    <div class="tech-tags">
+                        <span>Django</span>
+                        <span>Python</span>
+                        <span>PostgreSQL</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="https://lsbarbershop.tech" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <i class="fas fa-external-link-alt"></i> Ver projeto
+                    </a>
+                </div>
+
+                <!-- Cyber Notes (placeholder) -->
+                <div class="project-card reveal">
+                    <span class="badge">Em breve</span>
+                    <h3>Cyber Notes</h3>
+                    <p>
+                        Plataforma inteligente para anotações e organização de ideias, com foco em produtividade e
+                        colaboração. (Projeto em desenvolvimento)
+                    </p>
+                    <div class="tech-tags">
+                        <span>React</span>
+                        <span>Django</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-disabled" disabled>
+                        <i class="fas fa-hourglass-half"></i> Em desenvolvimento
+                    </button>
+                </div>
+
+                <!-- LS Finance (placeholder) -->
+                <div class="project-card reveal">
+                    <span class="badge">Em breve</span>
+                    <h3>LS Finance</h3>
+                    <p>
+                        Sistema para controle financeiro e gestão de fluxo de caixa, desenvolvido para pequenas e
+                        médias empresas. (Projeto em planejamento)
+                    </p>
+                    <div class="tech-tags">
+                        <span>Django</span>
+                        <span>Python</span>
+                        <span>Bootstrap</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-disabled" disabled>
+                        <i class="fas fa-hourglass-half"></i> Em planejamento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECHNOLOGIES ===== -->
+    <section class="tech section-padding" id="tech" aria-labelledby="tech-title">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" id="tech-title">Tecnologias que utilizamos</h2>
+                <p class="section-subtitle mx-auto">Ferramentas modernas para construir soluções robustas e escaláveis.</p>
+            </div>
+            <div class="tech-grid">
+                <span class="tech-item"><span class="dot"></span> Python</span>
+                <span class="tech-item"><span class="dot"></span> Django</span>
+                <span class="tech-item"><span class="dot"></span> Django REST Framework</span>
+                <span class="tech-item"><span class="dot"></span> PostgreSQL</span>
+                <span class="tech-item"><span class="dot"></span> JavaScript</span>
+                <span class="tech-item"><span class="dot"></span> HTML</span>
+                <span class="tech-item"><span class="dot"></span> CSS</span>
+                <span class="tech-item"><span class="dot"></span> Git</span>
+                <span class="tech-item"><span class="dot"></span> Linux</span>
+                <span class="tech-item"><span class="dot"></span> Docker</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="process section-padding" id="process" aria-labelledby="process-title">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" id="process-title">Como transformamos uma ideia em sistema</h2>
+                <p class="section-subtitle mx-auto">Um processo claro e colaborativo para entregar a solução certa.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <h4>Entendimento</h4>
+                    <p>Compreendemos o negócio e identificamos o problema a ser resolvido.</p>
+                </div>
+                <div class="process-step reveal">
+                    <h4>Planejamento</h4>
+                    <p>Definimos funcionalidades, escopo e arquitetura da solução.</p>
+                </div>
+                <div class="process-step reveal">
+                    <h4>Desenvolvimento</h4>
+                    <p>Construímos a solução de forma organizada, escalável e com boas práticas.</p>
+                </div>
+                <div class="process-step reveal">
+                    <h4>Testes</h4>
+                    <p>Validamos funcionalidades e corrigimos problemas antes da entrega.</p>
+                </div>
+                <div class="process-step reveal">
+                    <h4>Entrega</h4>
+                    <p>Publicamos o sistema e orientamos o cliente para o uso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DIFFERENTIALS ===== -->
+    <section class="differentials section-padding" id="differentials" aria-labelledby="diffs-title">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" id="diffs-title">Por que desenvolver sob medida?</h2>
+                <p class="section-subtitle mx-auto">Soluções personalizadas que se adaptam ao seu negócio, e não o contrário.</p>
+            </div>
+            <div class="diffs-grid">
+                <div class="diff-card reveal">
+                    <span class="icon"><i class="fas fa-pencil-ruler"></i></span>
+                    <h4>Solução personalizada</h4>
+                    <p>O sistema é desenvolvido de acordo com o funcionamento do seu negócio.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <span class="icon"><i class="fas fa-arrow-up"></i></span>
+                    <h4>Escalabilidade</h4>
+                    <p>A solução pode evoluir conforme sua empresa cresce e novas necessidades surgem.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <span class="icon"><i class="fas fa-code"></i></span>
+                    <h4>Tecnologia moderna</h4>
+                    <p>Utilizamos tecnologias atuais e boas práticas de desenvolvimento.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <span class="icon"><i class="fas fa-handshake"></i></span>
+                    <h4>Proximidade</h4>
+                    <p>Comunicação direta durante todo o desenvolvimento, sem burocracia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about section-padding" id="about" aria-labelledby="about-title">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title" id="about-title">Tecnologia criada para resolver problemas reais.</h2>
+                <p>
+                    A LS Tech nasceu com o objetivo de ajudar empresas a utilizarem tecnologia de forma prática,
+                    criando sistemas que simplificam processos e ajudam negócios a evoluir.
+                    <br /><br />
+                    Somos uma equipe especializada no desenvolvimento de soluções sob medida, com foco em entregar
+                    valor real para cada cliente. Nossa abordagem é humana, direta e orientada a resultados.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="cta" aria-labelledby="cta-title">
+        <div class="container">
+            <h2 id="cta-title">Tem um processo que poderia ser melhor?</h2>
+            <p>Vamos conversar sobre como transformar sua necessidade em uma solução digital.</p>
+            <a href="#contact" class="btn btn-primary">Solicitar orçamento</a>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact section-padding" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" id="contact-title">Vamos conversar</h2>
+                <p class="section-subtitle mx-auto">Preencha o formulário ou fale conosco diretamente pelo WhatsApp.</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info reveal">
+                    <h3>Fale com a LS Tech</h3>
+                    <p>
+                        Tem uma ideia ou um problema que a tecnologia pode resolver? Entre em contato e vamos
+                        construir a solução juntos.
+                    </p>
+                    <a href="#" class="whatsapp-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp fa-2x"></i> (75) 9 9162-7153
+                    </a>
+                </div>
+
+                <!-- 
+                    FORMULÁRIO COM ENVIO PARA E-MAIL via FormSubmit + fallback
+                -->
+                <form class="contact-form reveal" method="POST">
+    {% csrf_token %}
+    
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="id_nome">Nome completo</label>
+        {{ form.nome }}
+        {% if form.nome.errors %}
+            <small class="error">{{ form.nome.errors }}</small>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_empresa">Empresa</label>
+        {{ form.empresa }}
+    </div>
+    <div class="form-group">
+        <label for="id_email">E-mail</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <small class="error">{{ form.email.errors }}</small>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_whatsapp">WhatsApp</label>
+        {{ form.whatsapp }}
+    </div>
+    <div class="form-group">
+        <label for="id_mensagem">Conte um pouco sobre seu projeto</label>
+        {{ form.mensagem }}
+        {% if form.mensagem.errors %}
+            <small class="error">{{ form.mensagem.errors }}</small>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+        <i class="fas fa-paper-plane"></i> Enviar solicitação
+    </button>
+    <p style="font-size:0.75rem;color:var(--color-text-muted);margin-top:12px;text-align:center;">
+        Seus dados estão seguros. Não compartilhamos informações com terceiros.
+    </p>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-brand">
+                <a href="#" class="logo" aria-label="LS Tech - Página inicial">LS <span>Tech</span></a>
+                <p>Desenvolvimento de sistemas sob medida.</p>
+            </div>
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Redes</h4>
+                <ul>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="mailto:contato@lstech.dev">contato@lstech.dev</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 LS Tech. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MODAL DE FALLBACK (envio manual) ===== -->
+    <div class="modal-overlay" id="fallbackModal">
+        <div class="modal-box">
+            <div class="icon-big"><i class="fas fa-envelope"></i></div>
+            <h3>Ops, algo deu errado</h3>
+            <p>
+                Não foi possível enviar automaticamente. Mas você pode copiar os dados abaixo e enviar manualmente
+                para <strong>lstechsolution1@gmail.com</strong>.
+            </p>
+            <div class="data-preview" id="fallbackData"></div>
+            <div class="btn-group">
+                <button class="btn btn-outline" id="closeModalBtn">Fechar</button>
+                <a href="mailto:lstechsolution1@gmail.com?subject=Orçamento%20-%20LS%20Tech" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Enviar e-mail
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---------- MENU MOBILE ----------
+            const toggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('navLinks');
+
+            toggle.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                this.setAttribute('aria-expanded', expanded);
+                this.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+
+            nav.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (nav.classList.contains('open')) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.classList.remove('active');
+                        nav.classList.remove('open');
+                    }
+                });
+            });
+
+            // ---------- HEADER SCROLL ----------
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, { passive: true });
+
+            // ---------- REVEAL ON SCROLL ----------
+            const revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+
+            // ---------- FORMULÁRIO COM FETCH + FALLBACK ----------
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const modal = document.getElementById('fallbackModal');
+            const fallbackData = document.getElementById('fallbackData');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            // Função para mostrar fallback
+            function showFallback(data) {
+                let text = '';
+                for (const [key, value] of data.entries()) {
+                    if (key.startsWith('_')) continue; // ignora campos ocultos do FormSubmit
+                    text += `${key}: ${value || '(não informado)'}\n`;
+                }
+                fallbackData.textContent = text;
+                modal.classList.add('active');
+                // resetar botão
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar solicitação';
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+                submitBtn.style.boxShadow = '';
+            }
+
+            // Fechar modal
+            closeModalBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) modal.classList.remove('active');
+            });
+
+            // Envio do formulário
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validação simples
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                if (!name || !email || !message) {
+                    alert('Por favor, preencha Nome, E-mail e Mensagem.');
+                    return;
+                }
+
+                const formData = new FormData(form);
+
+                // Estado de carregamento
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                submitBtn.disabled = true;
+
+                // Envia via POST para o FormSubmit
+                fetch('https://formsubmit.co/lstechsolution1@gmail.com', {
+                        method: 'POST',
+                        body: formData,
+                        // mode: 'no-cors' // se usar no-cors, não conseguimos ler a resposta, mas o envio funciona.
+                        // Vamos usar o padrão 'cors' para tentar capturar erro.
+                    })
+                    .then(function(response) {
+                        // Se a resposta for ok (status 2xx), consideramos sucesso.
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error('Resposta do servidor: ' + response.status);
+                        }
+                    })
+                    .then(function() {
+                        // Sucesso!
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado com sucesso!';
+                        submitBtn.style.background = '#22c55e';
+                        submitBtn.style.boxShadow = '0 4px 16px rgba(34,197,94,0.30)';
+                        submitBtn.disabled = false;
+                        form.reset();
+                        // Voltar ao normal após alguns segundos
+                        setTimeout(function() {
+                            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar solicitação';
+                            submitBtn.style.background = '';
+                            submitBtn.style.boxShadow = '';
+                            submitBtn.disabled = false;
+                        }, 4000);
+                    })
+                    .catch(function(error) {
+                        // Falha na requisição – mostra fallback
+                        console.warn('Falha no envio automático:', error);
+                        showFallback(formData);
+                    });
+            });
+
+            // ---------- SUAVIZAR ÂNCORAS ----------
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset -
+                            headerHeight - 12;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
