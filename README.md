@@ -21,3 +21,4 @@ Edite o `settings.py` para configurar o envio real de e-mails (SMTP).
 - JavaScript
 - Bootstrap (opcional)
 
+ 
