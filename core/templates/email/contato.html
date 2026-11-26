@@ -1,171 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo orçamento - LS Tech</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f7fa;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-        .header {
-            background: #0b1a2e;
-            padding: 30px 30px 20px;
-            text-align: center;
-        }
-        .header h1 {
-            color: #ffffff;
-            font-size: 24px;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        .header h1 span {
-            color: #3b9eff;
-        }
-        .header p {
-            color: rgba(255,255,255,0.6);
-            margin: 5px 0 0;
-            font-size: 14px;
-        }
-        .content {
-            padding: 30px;
-        }
-        .content h2 {
-            font-size: 20px;
-            margin-top: 0;
-            color: #0b1a2e;
-            border-bottom: 2px solid #eef2f7;
-            padding-bottom: 12px;
-        }
-        .field {
-            margin-bottom: 18px;
-            padding: 12px 16px;
-            background: #f8fafc;
-            border-radius: 8px;
-            border-left: 4px solid #3b9eff;
-        }
-        .field-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #7a8b9f;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .field-value {
-            font-size: 16px;
-            color: #1a2634;
-            font-weight: 500;
-            word-break: break-word;
-        }
-        .message-box {
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 10px;
-            border: 1px solid #e2e8f0;
-            color: #1a2634;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-        .footer {
-            background: #f8fafc;
-            padding: 20px 30px;
-            text-align: center;
-            font-size: 13px;
-            color: #7a8b9f;
-            border-top: 1px solid #eef2f7;
-        }
-        .footer a {
-            color: #3b9eff;
-            text-decoration: none;
-        }
-        .badge {
-            display: inline-block;
-            background: #3b9eff;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        @media only screen and (max-width: 480px) {
-            .container {
-                margin: 10px;
-                border-radius: 8px;
-            }
-            .header {
-                padding: 20px;
-            }
-            .content {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>LS <span>Tech</span></h1>
-            <p>Desenvolvimento de sistemas sob medida</p>
-        </div>
+<body style="margin:0;padding:24px;background-color:#050608;font-family:'Segoe UI',Arial,sans-serif;color:#F4F7FB;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;margin:0 auto;background-color:#101318;border:1px solid #1E2433;border-radius:16px;overflow:hidden;">
+        <tr>
+            <td style="padding:32px;text-align:center;background:linear-gradient(135deg,#0B1120 0%,#16112B 100%);border-bottom:2px solid #5B4BFF;">
+                <h1 style="margin:0;font-size:26px;letter-spacing:-0.5px;color:#FFFFFF;">
+                    LS <span style="color:#1FA2FF;">Tech</span>
+                </h1>
+                <p style="margin:6px 0 0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;">
+                    Beyond Digital • Nova Solicitação
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:32px;">
+                <h2 style="margin:0 0 20px;font-size:18px;color:#F4F7FB;">Detalhes do contato recebido</h2>
 
-        <!-- Content -->
-        <div class="content">
-            <h2>📋 Nova solicitação de orçamento</h2>
-            
-            <div class="field">
-                <div class="field-label">👤 Nome completo</div>
-                <div class="field-value">{{ nome }}</div>
-            </div>
+                <div style="margin-bottom:14px;padding:14px 16px;background:#07090E;border-left:3px solid #1FA2FF;border-radius:8px;">
+                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748B;margin-bottom:4px;">Nome</div>
+                    <div style="font-size:15px;color:#F4F7FB;font-weight:600;">{{ nome }}</div>
+                </div>
 
-            <div class="field">
-                <div class="field-label">🏢 Empresa</div>
-                <div class="field-value">{{ empresa }}</div>
-            </div>
+                <div style="margin-bottom:14px;padding:14px 16px;background:#07090E;border-left:3px solid #5B4BFF;border-radius:8px;">
+                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748B;margin-bottom:4px;">Empresa</div>
+                    <div style="font-size:15px;color:#F4F7FB;">{{ empresa }}</div>
+                </div>
 
-            <div class="field">
-                <div class="field-label">📧 E-mail</div>
-                <div class="field-value"><a href="mailto:{{ email }}">{{ email }}</a></div>
-            </div>
+                <div style="margin-bottom:14px;padding:14px 16px;background:#07090E;border-left:3px solid #1FA2FF;border-radius:8px;">
+                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748B;margin-bottom:4px;">E-mail</div>
+                    <div style="font-size:15px;"><a href="mailto:{{ email }}" style="color:#1FA2FF;text-decoration:none;">{{ email }}</a></div>
+                </div>
 
-            <div class="field">
-                <div class="field-label">📱 WhatsApp</div>
-                <div class="field-value">{{ whatsapp }}</div>
-            </div>
+                <div style="margin-bottom:14px;padding:14px 16px;background:#07090E;border-left:3px solid #8A2BE2;border-radius:8px;">
+                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748B;margin-bottom:4px;">WhatsApp</div>
+                    <div style="font-size:15px;color:#F4F7FB;">{{ whatsapp }}</div>
+                </div>
 
-            <div class="field" style="border-left-color: #6b7280;">
-                <div class="field-label">💬 Mensagem</div>
-                <div class="message-box">{{ mensagem }}</div>
-            </div>
-
-            <div style="margin-top: 24px; text-align: center;">
-                <span class="badge">Novo lead</span>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>
-                Esta mensagem foi enviada através do formulário de contato do site da LS Tech.<br>
-                <a href="mailto:lstechsolution1@gmail.com">lstechsolution1@gmail.com</a>
-            </p>
-        </div>
-    </div>
+                <div style="padding:16px;background:#07090E;border:1px solid #1E2433;border-radius:8px;">
+                    <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#64748B;margin-bottom:8px;">Mensagem do projeto</div>
+                    <div style="font-size:14px;line-height:1.6;color:#CBD5E1;white-space:pre-wrap;">{{ mensagem }}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:20px 32px;text-align:center;background:#07090E;border-top:1px solid #1E2433;font-size:12px;color:#64748B;">
+                Enviado via <strong style="color:#94A3B8;">lstech.dev.br</strong>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
